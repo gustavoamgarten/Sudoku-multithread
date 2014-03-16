@@ -4,11 +4,13 @@
 #include <unistd.h>
 
 #include "dicas.h"
+#include "completa.h"
 
 #define TAB_LARG 9
 #define TAB_ALT 9
 
 int main(){
+	
 	
 	
 	char tabuleiro[TAB_LARG][TAB_ALT] = {{'X', '6', '1', 'X', 'X', 'X', 'X', '9', 'X'}
@@ -34,6 +36,21 @@ int main(){
 										};
 	*/
 	int value = dicas(tabuleiro);
+	int completou = completa(tabuleiro, 0, 0);
+	
+	int i, j;
+	for(i = 0; i < TAB_ALT; i++){
+		if(i%3 == 0 && i != 0){
+			printf("\n");
+		}
+		for(j = 0; j < TAB_LARG; j++){
+			if(j%3 == 0 && j != 0){
+				printf(" ");
+			}
+			printf("[%c]", tabuleiro[i][j]);
+		}
+		printf("\n");
+	}
 	
 	return 0;	
 }
