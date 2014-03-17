@@ -21,6 +21,12 @@ typedef struct argVerificaSequencia {
 	char *sequencia;
 } ArgVerificaSequencia;
 
+typedef struct argVerificacao {
+	int searchValue;
+	int posElemento;
+	char *sequencia;
+} ArgVerificacao;
+
 // ##############################
 // Fim estruturas
 // ##############################

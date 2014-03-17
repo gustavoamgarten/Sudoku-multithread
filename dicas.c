@@ -183,6 +183,7 @@ int dicas(char tab[TAB_LARG][TAB_ALT]){
 	} //Fim for
 	
 	// Percorre o tabuleiro novamente, indicando as dicas nos respectivos campos com X.
+	printf("Dicas: \n\n");
 	k = 0;
 	for(i = 0; i < TAB_ALT; i++){
 		for(j = 0; j < TAB_LARG; j++){

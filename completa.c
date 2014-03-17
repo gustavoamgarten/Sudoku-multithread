@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "completa.h"
 #include "dicas.h"
+#include "verificacao.h"
 
 #define TAB_LARG 9
 #define TAB_ALT 9
@@ -46,13 +47,6 @@ int completa(char tab[TAB_LARG][TAB_ALT], int linhaInicial, int colunaInicial){
 	ArgPercorre *argColuna = (ArgPercorre *) malloc(sizeof(ArgPercorre));
 	ArgPercorreQuadrado *argQuadrado = (ArgPercorreQuadrado *) malloc(sizeof(ArgPercorreQuadrado)); 
 	ArgVerificaSequencia *argVerifica = (ArgVerificaSequencia *) malloc(3*sizeof(ArgVerificaSequencia));
-	
-	// Copia o tabuleiro antes de ser modificado.
-	for(i = 0; i < TAB_ALT; i++){
-		for(j = 0; j < TAB_LARG; j++){
-			copiaTabOriginal[i][j] = tab[i][j];
-		}
-	} 
 	
 	// Percorre o tabuleiro procurando os campos que contém um X
 	for(i = 0; i < TAB_LARG; i++) {
@@ -102,18 +96,9 @@ int completa(char tab[TAB_LARG][TAB_ALT], int linhaInicial, int colunaInicial){
 					pthread_join(thread[2], (void*)&existeQuadrado); 
 					
 					if(*existeLinha == 0 && *existeColuna == 0 && *existeQuadrado == 0){
-						//completou++;
-						//possibilidades[numDicas][maxValue] = k+49;
 						tab[i][j] = k + 49;
 						completou = completa(tab, i, j);
 						if(completou == 0){
-							/*
-							for(m = i; m < TAB_ALT; m++){
-								for(n = j; n < TAB_LARG; n++){
-									tab[m][n] = copiaTabOriginal[m][n];
-								}
-							}
-							*/
 							tab[i][j] = 'X';
 						} else {
 							//k = MAX_NUM; // Sai do for
@@ -131,4 +116,4 @@ int completa(char tab[TAB_LARG][TAB_ALT], int linhaInicial, int colunaInicial){
 	
 	return 1;
 	
-} //Fim função dicas
+} //Fim função completa
